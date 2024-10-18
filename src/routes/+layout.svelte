@@ -3,17 +3,17 @@
     import Sidebar from '$lib/shared/ui/components/Sidebar.svelte';
     import '../styles/app.css';
 
-    let showSidebar = true;
+    let isCollapsed = false;
 
-    const toggleSidebar = () => {
-        showSidebar = !showSidebar;
-    };
+    function handleToggle() {
+        isCollapsed = !isCollapsed;
+    }
 </script>
 
 <main>
-    <Sidebar isOpen={showSidebar}/>
-    <div class="main-section">
-        <Header {showSidebar} on:toggleSidebar={toggleSidebar} />
+    <Sidebar {isCollapsed} on:toggle={handleToggle}/>
+    <div class="main-section"  class:collapsed={isCollapsed}>
+        <Header />
         <div class="main-body">
             <slot />
         </div>
@@ -21,21 +21,27 @@
 </main>
 
 <style>
-    .main-body{
-        padding: 30px 0;
+    main{
+        display: flex;
     }
 
     .main-section{
-        margin-left: 18rem;
+        flex: 1;
+        width: 100%;
+        margin-left: 16rem;
+        overflow-y: auto;
+        transition: all 0.5s;
+    }
+
+    .main-body{
+        padding: 20px 2rem;
     }
 
     :global(.sidebar.open ~ .main-section) {
-        margin-left: 18rem;
         transition: all 0.5s;
     }
 
-    :global(.sidebar.closed ~ .main-section) {
-        margin-left: 0;
-        transition: all 0.5s;
+    .main-section.collapsed {
+        margin-left: 4.5rem;
     }
 </style>

@@ -11,7 +11,6 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"svelte": "^4.2.7",
 		"svelte-check": "^4.0.0",
@@ -20,6 +19,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"remixicon": "^4.3.0"
+		"remixicon": "^4.3.0",
+		"sweetalert2": "^11.14.3"
 	}
 }

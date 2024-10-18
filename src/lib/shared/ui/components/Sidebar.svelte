@@ -1,18 +1,21 @@
 <script lang="ts">
     import "remixicon/fonts/remixicon.css";
     import { page } from '$app/stores';
+    import { createEventDispatcher } from 'svelte';
 
+    const dispatch = createEventDispatcher();
     $: currentRoute = $page.url.pathname;
-    let isCollapsed = true;
+    export let isCollapsed = false;
 
-    function handleToggle(){
-        isCollapsed = !isCollapsed;
+    function handleToggle() {
+        dispatch('toggle');
+        console.log(isCollapsed);
     }
 </script>
 
 <div class="sidebar" class:collapsed={isCollapsed} role="navigation">
     <div class="logo">
-        <img src="dummy/logo.png" alt="logo" />
+        <img src="" alt="logo" />
         <button class="btn btn-toggle" type="button" on:click={handleToggle}>
             <i class="ri-menu-line"></i>
         </button>
@@ -79,6 +82,9 @@
         background-color: var(--bs-primary-color);
         padding: 30px 20px;
         transition: all 0.5s ease;
+        position: fixed;
+        overflow-y: auto;
+        z-index: 1000;
     }
 
     .sidebar.collapsed{
