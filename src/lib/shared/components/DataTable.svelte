@@ -1,8 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { Alert, PerPageSelector, Pagination, IconButton } from '$lib/shared/components';
-
-
+    
     export let columns;
     export let api:string;
 
